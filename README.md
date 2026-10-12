@@ -4,6 +4,8 @@ A validator for CHANGELOG.md files that enforces three things humans keep gettin
 
 **Confidence: High (85%)** that the ten rules catch the structural defects that actually mislead changelog readers; **Medium (55%)** that regex-based structure parsing survives your house style (nested lists, footers, link references) — the parser is deliberately tolerant, but exotic layouts may need rule relaxation [estimated].
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 Changelogs are read more than tested, so they rot silently: versions listed in random order, duplicate `## [1.2.0]` headings from a bad rebase, `2026-02-30` dates that no calendar ever had, `### Fixed` sections with nothing under them. Existing tooling mostly lints *commit messages*: gajus/conventional-changelog-lint-config-canonical (5★ as of 2026-10-11) is a shareable config for conventional-changelog-lint, HikawaRin/commitlint-config-megengine (0★) is another commit-convention config, and aanatoly/changelog-tool (0★) lints against the single-release Common Changelog style — all operate one level below the artifact users actually read. The overlooked angle: the CHANGELOG file itself has a checkable grammar, and three of its rules (monotonic versions, real dates, category hygiene) are mechanically enforceable.
